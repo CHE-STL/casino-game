@@ -15,7 +15,7 @@
     <div>
     <h2> Rules For Game 1 are:</h2>
 
-<p> roll the dice to win the game the lucky number are 7 and 11 which
+<p> roll the dice to win the game the lucky numbers are 7 and 11 which
     means YOU WIN STRAIGHT AWAY, however if you aren't so lucky
     don't panic you still have a chance of winning just match the result
     of your first roll before rolling  a 7 or 11. HOWEVER, if you roll
@@ -25,11 +25,25 @@
 </div>
 
 <div>
-<button onclick="die1()"> "ROLL" </button>
+    <input type="button" id="btn1" value="Roll">
+    <output type= "text" id= "rll1">
+    <p class = "output" id= "out1"></p>
+   
 </div>
 
 
 
+<div>
+    <input type="button" id="btn2" value="Roll">
+    <output type= "text" id= "rll2">
+    <p class = "output" id= "out2"></p>
+</div> 
+
+<div>
+    <label for="totalScore">Total Score:</label>
+    <output type = "text" id = "totalScore" value = "tScore"></output>
+    <p class="output" id ="out3" ></p>
+</div>
 
 
  <script src = "game.js" type= "text/javascript">  </script>
