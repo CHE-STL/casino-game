@@ -9,10 +9,12 @@ const secondRoll = Math.floor(Math.random()*6)+1
 const box1 = document.getElementById("rll1")
 const btn1 = document.getElementById("btn1")
  const tScore = document.getElementById("totalScore")
-function die1(){
+const reaction = document.getElementById("end")
+
+ function die1(){
   box1.innerHTML =  firstRoll
  }
-  
+
 btn1.addEventListener('click', die1)
 
 const box2 = document.getElementById("rll2")
@@ -26,26 +28,30 @@ function die2(){
   function result (){
     tScore.innerHTML = firstRoll+secondRoll
    }
-     btn2.addEventListener ('click',result)
-  //     let result = (+die1()) + (+die2())
-//      console.log ({result})
-   
+     btn2.addEventListener ('click',result,)
 
-  
+  function outcome(){
+    if (  firstRoll+secondRoll >6 && firstRoll+ secondRoll < 8){
+      reaction.innerHTML = ("WINNER!!!")
+    }else if (firstRoll+secondRoll>10 && firstRoll+secondRoll<12 ){
+      reaction.innerHTML = ("WINNER!!!") 
+    }else if (firstRoll+secondRoll> 1 && firstRoll+secondRoll< 4){
+      reaction.innerHTML = ("YOU LOSE!!!")
+    }else if  (firstRoll+secondRoll> 11 && firstRoll+secondRoll< 13){
+      reaction.innerHTML = ("YOU LOSE!!!")
+  }else (reaction.innerHTML= ("ROLL AGAIN"))
+ }
+
+btn2.addEventListener('click',outcome)
+
     
 //    console.log(secondRoll)
 
-//    const totalScore = (firstRoll + secondRoll)
+//    const result= (firstRoll + secondRoll)
 //    console.log(totalScore)
-//    if (totalScore >6 && totalScore <8 ){
+//    if (result>6 && result<8 ){
 //    console.log("WINNER!!!")
-// }else if (totalScore >10 && totalScore <12 ){
-//     console.log("WINNER!!!") 
-// }else if (totalScore > 1 && totalScore < 4){
-//     console.log("YOU LOSE!!!")
-// } else if  (totalScore > 11 && totalScore < 13){
-//     console.log ("YOU LOSE!!!")
-// }
+
   
 
 
