@@ -3,7 +3,7 @@ name: Deploy to Azure Blob Storage
 on:
   push:
     branches:
-      - casino-game
+      - main
 
 jobs:
   deploy:
