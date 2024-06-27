@@ -1,0 +1,25 @@
+name: Deploy to Azure Blob Storage
+
+on:
+  push:
+    branches:
+      - casino-game
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Deploy to Azure Blob Storage
+      uses: azure/cli@v1
+      with:
+        inlineScript: |
+          echo "Deploying to Azure Blob Storage"
+          az storage blob sync \
+            --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }} \
+            --account-key ${{ secrets.AZURE_STORAGE_ACCOUNT_KEY }} \
+            --container \$web \
+            --source ./  
