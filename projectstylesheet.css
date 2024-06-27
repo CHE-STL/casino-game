@@ -1,8 +1,26 @@
 
-body{
+body{ background-image:url(golden-casino-cards-dice-green.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    margin: 0;
+
+}
+
+h1.title{
+    text-align: center;
+    color: rgb(243, 241, 248);
     
 }
 
-h1{
+h2.g1_rules{
     text-align: center;
+    color: red;
+}
+
+p{
+text-align: center;
+color: gold;
 }

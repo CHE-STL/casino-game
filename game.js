@@ -1,56 +1,72 @@
-// let age = prompt("There is an age restriction on the Casino what is your age ?")
-//   if (age < 24){
-//     age = alert("You DO NOT meet the age requirement for the Casino. If you choose to proceed the developer of this game will not be responsible for any obtrusive content")
-//    }else{ age= alert(" Enjoy the virtual casino")} 
 
 
-const firstRoll=  Math.floor(Math.random()*6)+1
-const secondRoll = Math.floor(Math.random()*6)+1
-const box1 = document.getElementById("rll1")
-const btn1 = document.getElementById("btn1")
- const tScore = document.getElementById("totalScore")
-const reaction = document.getElementById("end")
+const box1 = document.getElementById("rll1");
+const btn1 = document.getElementById("btn1");
+const tScore = document.getElementById("totalScore");
+const reaction = document.getElementById("end");
+const box2 = document.getElementById("rll2");
+const btn2 = document.getElementById("btn2");
+const playAgainBtn = document.getElementById("playAgainBtn");
+const reRollBtn = document.getElementById("reRollBtn");
 
- function die1(){
-  box1.innerHTML =  firstRoll
- }
+let firstRoll, secondRoll;
 
-btn1.addEventListener('click', die1)
+function rollDice() {
+  return Math.floor(Math.random() * 6) + 1;
+}
 
-const box2 = document.getElementById("rll2")
-const btn2 = document.getElementById("btn2") 
+function die1() {
+  firstRoll = rollDice();
+  box1.innerHTML = firstRoll;
+  btn2.disabled = false; // Enable the second die roll button
+}
 
-function die2(){
-  box2.innerHTML = secondRoll 
-  }
-  btn2.addEventListener ('click',die2,)
+function die2() {
+  secondRoll = rollDice();
+  box2.innerHTML = secondRoll;
+  const total = firstRoll + secondRoll;
+  tScore.innerHTML = `Total Score: ${total}`;
 
-  function result (){
-    tScore.innerHTML = firstRoll+secondRoll
-   }
-     btn2.addEventListener ('click',result,)
+  let outcomeText = "UNLUCKY THIS TIME!!";
+  
+  if ((total > 6 && total < 8) || (total > 10 && total < 12)) {
+    outcomeText = "WINNER!!!";
+    playAgainBtn.style.display = "block";
+  } else if ((total > 1 && total < 4) || (total > 11 && total < 13)) {
+    outcomeText = "YOU LOSE!!!";
+    playAgainBtn.style.display = "block";
+  } else  
+    reRollBtn.style.display = "block";
+  
 
-  function outcome(){
-    if (  firstRoll+secondRoll >6 && firstRoll+ secondRoll < 8){
-      reaction.innerHTML = ("WINNER!!!")
-    }else if (firstRoll+secondRoll>10 && firstRoll+secondRoll<12 ){
-      reaction.innerHTML = ("WINNER!!!") 
-    }else if (firstRoll+secondRoll> 1 && firstRoll+secondRoll< 4){
-      reaction.innerHTML = ("YOU LOSE!!!")
-    }else if  (firstRoll+secondRoll> 11 && firstRoll+secondRoll< 13){
-      reaction.innerHTML = ("YOU LOSE!!!")
-  }else (reaction.innerHTML= ("ROLL AGAIN"))
- }
+  reaction.innerHTML = `Outcome: ${outcomeText}`;
 
-btn2.addEventListener('click',outcome)
+  // Disable buttons to prevent multiple rolls before restarting
+  btn1.disabled = true;
+  btn2.disabled = true;
+}
 
-    
-//    console.log(secondRoll)
+function startGame() {
+  firstRoll = null;
+  secondRoll = null;
+  box1.innerHTML = "-";
+  box2.innerHTML = "-";
+  tScore.innerHTML = "Total Score: -";
+  reaction.innerHTML = "Outcome: -";
+  btn1.disabled = false;
+  btn2.disabled = true;
+  playAgainBtn.style.display = "none";
+  reRollBtn.style.display = "none";
+}
 
-//    const result= (firstRoll + secondRoll)
-//    console.log(totalScore)
-//    if (result>6 && result<8 ){
-//    console.log("WINNER!!!")
+btn1.addEventListener('click', die1);
+btn2.addEventListener('click', die2);
+playAgainBtn.addEventListener('click', startGame);
+reRollBtn.addEventListener('click', startGame);
+
+// Start the initial game
+startGame();
+
 
   
 
