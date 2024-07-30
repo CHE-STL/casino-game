@@ -15,12 +15,26 @@ h1.title{
     
 }
 
-h2.g1_rules{
+h2.g1{
     text-align: center;
     color: red;
 }
 
-p{
+p.lucky{
 text-align: center;
 color: gold;
+}
+#gameOutput {
+    white-space: pre-wrap;
+    font-family: Arial, sans-serif;
+    margin-top: 20px;
+}
+
+h2.rps{
+    text-align: center;
+    color: red;
+}
+
+div.Score {
+    color: gold;
 }
