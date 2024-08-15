@@ -66,13 +66,19 @@ reRollBtn.addEventListener('click', startGame);
 
 // Start the initial game
 startGame();
+document.getElementById("startButton").addEventListener("click", function() {
+  document.getElementById("gameArea").style.display = "block";
+  startRps();
+});
 
 function startRps() {
   let playerScore = 0;
   let cpuScore = 0;
   const gameOutput = document.getElementById('gameOutput')
-  const gameArea = doument.getElementById('gameArea')
-  console.log('### BEST OF 5 CAN YOU BEAT THE COMPUTER?! ###');
+  const gameArea = document.getElementById('gameArea')
+  gameOutput.innerHTML = '';
+  
+  print('### BEST OF 5 CAN YOU BEAT THE COMPUTER?! ###');
 
   function getComputerChoice() {
       const choices = ['rock', 'paper', 'scissors'];
@@ -84,50 +90,56 @@ function startRps() {
       let computer = getComputerChoice();
 
       if (player === ' ') {
-          console.log('Please take your turn');
+          print('Please take your turn');
           continue;
       }
 
       if (player === computer) {
-          console.log(`It's a Tie!! Computer played: ${computer}`);
+          print(`It's a Tie!! Computer played: ${computer}`);
       } else if (player === 'rock') {
           if (computer === 'scissors') {
-              console.log(`You Win!! Computer played: ${computer}`);
+              print(`You Win!! Computer played: ${computer}`);
               playerScore += 1;
           } else if (computer === 'paper') {
-              console.log(`You lose!! Computer played: ${computer}`);
+              print(`You lose!! Computer played: ${computer}`);
               cpuScore += 1;
           }
       } else if (player === 'paper') {
           if (computer === 'rock') {
-              console.log(`You Win!! Computer played: ${computer}`);
+              print(`You Win!! Computer played: ${computer}`);
               playerScore += 1;
           } else if (computer === 'scissors') {
-              console.log(`You lose!! Computer played: ${computer}`);
+              print(`You lose!! Computer played: ${computer}`);
               cpuScore += 1;
           }
       } else if (player === 'scissors') {
           if (computer === 'paper') {
-              console.log(`You Win!! Computer played: ${computer}`);
+              print(`You Win!! Computer played: ${computer}`);
               playerScore += 1;
           } else if (computer === 'rock') {
-              console.log(`You lose!! Computer played: ${computer}`);
+              print(`You lose!! Computer played: ${computer}`);
               cpuScore += 1;
           }
       } else {
-          console.log('Something went wrong :(');
+          print('Something went wrong :(');
       }
 
-      console.log('Player score:', playerScore);
-      console.log('Computer score:', cpuScore);
+      print('Player score:', playerScore);
+      print('Computer score:', cpuScore);
   }
 
   if (playerScore > cpuScore) {
-      console.log('YOU ARE THE WINNER!!');
+      print('YOU ARE THE WINNER!!');
   } else {
-      console.log(`YOU HAVE LOST!! Computer played: ${computer}`);
+      print(`YOU HAVE LOST!! Computer played: ${computer}`);
   }
+  function print(message) {
+    const newParagraph = document.createElement('p');
+    newParagraph.textContent = message;
+    gameOutput.appendChild(newParagraph);
 }
+}
+
   
 
 

@@ -38,3 +38,14 @@ h2.rps{
 div.Score {
     color: gold;
 }
+
+#gameArea {
+    display: none;
+    margin-top: 20px;
+}
+#gameOutput {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
