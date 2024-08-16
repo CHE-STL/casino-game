@@ -89,7 +89,7 @@ function startRps() {
       let player = prompt('Rock, Paper, Scissors. Make your move!').toLowerCase();
       let computer = getComputerChoice();
 
-      if (player === ' ') {
+      if (player === '') {
           print('Please take your turn');
           continue;
       }
